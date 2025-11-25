@@ -167,7 +167,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/corelibs/xift.xyz/ref
 
         <div class="script-area">
           <div class="small" style="margin-bottom:6px">Script source:
-            <code id="srcUrl">https://xifthub.vercel.app/api</code>
+            <code id="srcUrl">https://overdrivehub.xyz</code>
           </div>
           <textarea id="scriptBox" placeholder="Script will load here automatically."></textarea>
 

@@ -14,279 +14,206 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/corelibs/xift.xyz/ref
   } else {
     // Serve HTML page to browsers
     res.setHeader('Content-Type', 'text/html');
-    res.send(`<!doctype html>
+    res.send(`<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Xift — Roblox MM2 Script Hub</title>
-  <meta name="description" content="Xift — Roblox MM2 Script Hub (ESP, Autofarm, Utilities)." />
-  <style>
-    :root {
-      --bg: #050505;
-      --g1: #b56cff;  /* lighter violet */
-      --g2: #7a00ff;  /* deep purple */
-      --muted: #a89fc0;
-      --card: rgba(255, 255, 255, 0.03);
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial;
-      color:#f0e8ff;
-      min-height:100vh;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:32px;
-      background: linear-gradient(180deg,#0a0212 0%, #130024 100%);
-      overflow-y:auto;
-    }
-    .bg-gradient {
-      position:fixed;inset:0;z-index:-2;pointer-events:none;
-      background: radial-gradient(600px 400px at 10% 20%, rgba(160,0,255,0.06), transparent 8%),
-                  radial-gradient(500px 300px at 90% 80%, rgba(90,0,200,0.04), transparent 6%);
-      filter: blur(20px) saturate(120%);
+ <meta charset="utf-8"/>
+ <meta content="width=device-width,initial-scale=1" name="viewport"/>
+ <title>Chunk Hub | Loader</title>
+ <style>
+  :root {
+        --bg: #1a1e30;
+        --fg: #fff;
+        --muted: #d1d1d1;
+        --pane: #121626;
+        --pane2: #0f1322;
+        --kw: #569cd6;
+        --str: #ce9178;
+        --com: #6a9955;
+        --num: #b5cea8
     }
 
-    .container{width:100%;max-width:980px;position:relative;z-index:1}
-    header{display:flex;align-items:center;gap:20px}
-    .logo{width:92px;height:92px;border-radius:16px;display:flex;align-items:center;justify-content:center;
-          background:linear-gradient(180deg,var(--g1),var(--g2));
-          box-shadow:0 10px 40px rgba(180,100,255,0.08), inset 0 -6px 18px rgba(0,0,0,0.18);}
-    .logo img{width:88%;height:88%;object-fit:cover;border-radius:10px}
-    h1{margin:0;font-size:28px;letter-spacing:4px;background:linear-gradient(90deg,var(--g1),var(--g2));-webkit-background-clip:text;color:transparent}
-    p.lead{margin:6px 0 0;color:var(--muted)}
+    * { box-sizing: border-box }
 
-    .hero{display:flex;gap:32px;align-items:flex-start;margin-top:22px;flex-wrap:wrap}
-    .card{background:var(--card);padding:20px;border-radius:14px;backdrop-filter:blur(6px);box-shadow:inset 0 1px 0 rgba(255,255,255,0.02);transition:box-shadow 0.3s ease, transform 0.3s ease}
-
-    .left{flex:1;min-width:260px}
-    .right{width:360px;min-width:260px}
-
-    .tagline{font-size:13px;color:var(--muted);margin-bottom:12px}
-    .feature-list{display:grid;gap:8px}
-    .feature{display:flex;gap:12px;align-items:center}
-    .dot{width:10px;height:10px;border-radius:50%;background:linear-gradient(180deg,var(--g1),var(--g2));box-shadow:0 0 12px rgba(180,100,255,0.12)}
-
-    .script-area{margin-top:14px}
-    textarea#scriptBox{width:100%;height:200px;background:transparent;border:1px dashed rgba(255,255,255,0.06);color:#e3caff;padding:12px;border-radius:10px;resize:vertical;font-family:monospace}
-
-    .controls{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
-    button{cursor:pointer;border:0;padding:10px 14px;border-radius:10px;font-weight:600}
-    .btn-primary{background:linear-gradient(90deg,var(--g1),var(--g2));color:#15002a}
-    .btn-ghost{background:transparent;color:var(--g1);border:1px solid rgba(180,100,255,0.06)}
-
-    .yt{display:inline-flex;align-items:center;gap:10px;text-decoration:none;padding:10px 14px;border-radius:10px;background:rgba(255,255,255,0.02);color:#fff;transition:all 0.25s ease}
-    .yt:hover{background:rgba(180,100,255,0.08);box-shadow:0 0 14px rgba(180,100,255,0.25)}
-
-    .small{font-size:13px;color:var(--muted)}
-    footer{margin-top:22px;color:var(--muted);font-size:13px}
-
-    .videoWrapper{position:relative;padding-bottom:56.25%;height:0;border-radius:12px;overflow:hidden;box-shadow:0 8px 30px rgba(180,100,255,0.06);margin-top:12px;transition:all 0.35s ease}
-    .videoWrapper:hover{box-shadow:0 0 25px rgba(180,100,255,0.25), 0 0 50px rgba(120,0,255,0.15);transform:translateY(-2px)}
-    .videoWrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
-
-    @media (max-width:760px){.hero{flex-direction:column}.right{width:100%}}
-
-    #welcomeOverlay {
-      position: fixed;
-      inset: 0;
-      background: radial-gradient(circle at center, rgba(160,0,255,0.1) 0%, #000 90%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 9999;
-      animation: overlayFadeOut 2.5s ease 1 forwards;
+    body {
+        margin: 0;
+        font-family: Roboto, Arial, sans-serif;
+        background-color: var(--bg);
+        color: var(--fg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh
     }
 
-    .welcome-text {
-      font-size: 2rem;
-      font-weight: 700;
-      color: #f0e8ff;
-      letter-spacing: 2px;
-      text-align: center;
-      opacity: 0;
-      animation: textFadeIn 1.2s ease forwards 0.3s;
-      text-shadow: 0 0 12px rgba(180,100,255,0.4);
+    .container {
+        text-align: center;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0);
+        border-radius: 12px;
+        box-shadow: 0 8px 15px transparent;
+        width: min(900px, 92vw)
     }
 
-    .welcome-text span {
-      background: linear-gradient(90deg, var(--g1), var(--g2));
-      -webkit-background-clip: text;
-      color: transparent;
-      text-shadow: 0 0 20px rgba(180,100,255,0.6);
+    .brand {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 16px
     }
 
-    @keyframes textFadeIn {
-      from {opacity: 0; transform: translateY(10px);}
-      to {opacity: 1; transform: translateY(0);}
+    .brand-text {
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--fg);
+        margin-top: 5px
     }
 
-    @keyframes overlayFadeOut {
-      0%, 75% {opacity: 1;}
-      100% {opacity: 0; visibility: hidden;}
+    h1 {
+        font-size: 22px;
+        margin: 0 0 10px
     }
 
-    .faq {margin-top: 24px;}
-    .faq h3 {margin-bottom: 8px;}
-    .faq-item {margin-bottom: 10px;}
-    .faq-item strong {color: var(--g1);}
-  </style>
+    p {
+        font-size: 14px;
+        color: var(--muted);
+        margin: 6px 0 16px
+    }
+
+    .editor {
+        position: relative;
+        text-align: left;
+        border-radius: 10px;
+        background: linear-gradient(180deg, var(--pane), var(--pane2));
+        padding: 14px 44px 14px 14px;
+        overflow: auto;
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .06)
+    }
+
+    pre {
+        margin: 0;
+        white-space: pre;
+        overflow: auto
+    }
+
+    code {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 14px;
+        line-height: 1.5
+    }
+
+    .kw { color: var(--kw); font-weight: 600 }
+    .str { color: var(--str) }
+    .com { color: var(--com); font-style: italic }
+    .num { color: var(--num) }
+
+    .copy {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        border: 0;
+        border-radius: 8px;
+        background: #2a3150;
+        color: #fff;
+        padding: 6px 10px;
+        font-size: 12px;
+        cursor: pointer;
+        user-select: none;
+        transition: transform .05s ease, opacity .2s ease
+    }
+
+    .copy:active { transform: scale(.97) }
+
+    .hint { font-size: 12px; color: var(--muted); margin-top: 10px }
+
+    @media (min-width:640px) {
+        h1 { font-size: 24px }
+        p { font-size: 15px }
+        code { font-size: 15px }
+    }
+ </style>
 </head>
 <body>
-  <div class="bg-gradient" aria-hidden="true"></div>
-
-  <div id="welcomeOverlay">
-    <div class="welcome-text">Welcome to <span>Xift</span></div>
+ <div class="container">
+  <div class="brand">
+   <div class="brand-text">
+    📜 Loadstring
+   </div>
   </div>
-
-  <div class="container">
-    <header>
-      <div class="logo card">
-        <img src="logo.png" alt="Xift logo" onerror="this.style.display='none'"/>
-      </div>
-      <div>
-        <h1>XIFT</h1>
-        <p class="lead">Roblox MM2 Script Hub — ESP, Autofarm & Utilities</p>
-      </div>
-      <div style="margin-left:auto;display:flex;align-items:center;gap:12px">
-        <a class="yt" href="https://youtube.com/@zvlnscript?si=UZDKVLl0SAWQUQZp" target="_blank" rel="noopener">YouTube → @zvlnscript</a>
-      </div>
-    </header>
-
-    <main class="hero">
-      <section class="left card">
-        <div class="tagline">Click <strong>Load</strong> to fetch the script — auto-copy happens when loaded.</div>
-
-        <div class="feature-list">
-          <div class="feature"><span class="dot"></span><div><strong>ESP</strong><div class="small">See players through walls</div></div></div>
-          <div class="feature"><span class="dot"></span><div><strong>Autofarm</strong><div class="small">Collect Candy Automatically / Coins</div></div></div>
-          <div class="feature"><span class="dot"></span><div><strong>Combat</strong><div class="small">Shoot murderer with perfect accuracy</div></div></div>
-        </div>
-
-        <div class="script-area">
-          <div class="small" style="margin-bottom:6px">Script source:
-            <code id="srcUrl">https://overdrivehub.xyz</code>
-          </div>
-          <textarea id="scriptBox" placeholder="Script will load here automatically."></textarea>
-
-          <div class="controls">
-            <button id="loadBtn" class="btn-ghost">Load Script</button>
-            <button id="copyBtn" class="btn-primary">Copy Script</button>
-            <button id="openBtn" class="btn-ghost">Join Discord Server</button>
-          </div>
-          <div id="status" class="small" style="margin-top:8px;color:var(--muted)"></div>
-        </div>
-
-        <section class="card" style="margin-top:20px">
-          <h3 style="margin-top:0">How to Copy the Script</h3>
-          <div class="small">
-            <ol style="margin-left:18px; line-height:1.6">
-              <li>Click the <strong>Load Script</strong> button — this will fetch and copy the script automatically.</li>
-              <li>If you want to copy it again manually, click the <strong>Copy Script</strong> button.</li>
-              <li>Paste it into your executor (like Delta, Krnl, Codex, etc.) and run it.</li>
-              <li>If it doesn’t load, make sure your internet connection is stable or try another executor.</li>
-            </ol>
-          </div>
-        </section>
-
-        <section class="card" style="margin-top:20px">
-          <h3 style="margin-top:0">Frequently Asked Questions</h3>
-          <div class="small">
-            <p><strong>Q:</strong> What executors are supported?<br>
-            <strong>A:</strong> All executors.</p>
-
-            <p><strong>Q:</strong> Does the script support mobile executors?<br>
-            <strong>A:</strong> Yes! Works with mobile executors like Delta, Krnl, and Codex.</p>
-
-            <p><strong>Q:</strong> Will I get banned for using this?<br>
-            <strong>A:</strong> Unlikely — if you use an undetectable executor, you won’t get banned. As for MM2, you don’t have to worry — it’s completely safe.</p>
-
-            <p><strong>Q:</strong> Do I need to update manually?<br>
-            <strong>A:</strong> Nope — the script auto-updates from the obfuscated source.</p>
-
-            <p><strong>Q:</strong> Will my items get stolen?<br>
-            <strong>A:</strong> Of course not! This script has no malicious code.</p>
-
-            <p><strong>Q:</strong> Can I share this with friends?<br>
-            <strong>A:</strong> Of course! Just give credits.</p>
-
-            <p><strong>Q:</strong> What should I do if the script doesn’t load?<br>
-            <strong>A:</strong> Check your internet connection or try using a different executor.</p>
-
-            <p><strong>Q:</strong> Does it support other Roblox games?<br>
-            <strong>A:</strong> Currently optimized for MM2, but more games are planned soon.</p>
-
-            <p><strong>Q:</strong> Who created Xift?<br>
-            <strong>A:</strong> It was developed by the <strong>ZVLN Script</strong> team on YouTube!</p>
-          </div>
-        </section>
-      </section>
-
-      <aside class="right card">
-        <h3 style="margin-top:0">Preview (Latest Upload)</h3>
-        <div class="videoWrapper">
-          <iframe src="https://www.youtube.com/embed/vycH_FXRYZE" title="Xift Preview" allowfullscreen></iframe>
-        </div>
-        <div class="small" style="margin-top:8px;color:var(--muted)">Showing latest showcase from YouTube.</div>
-      </aside>
-    </main>
-
-    <footer class="card">
-      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px">
-        <div class="small">© <strong>Xift</strong> — xifton.top</div>
-        <div class="small">Made for: <a href="https://youtube.com/@zvlnscript?si=UZDKVLl0SAWQUQZp" target="_blank">@zvlnscript</a></div>
-      </div>
-    </footer>
+  <div aria-label="Read-only code editor" class="editor" role="region">
+   <button aria-label="Copy code" class="copy" title="Copy">
+    Copy
+   </button>
+   <pre><code class="lua" id="code"></code></pre>
   </div>
+  <div class="hint">
+   Contents can not be displayed on browser • https://discord.gg/66twJ78sTH
+  </div>
+ </div>
+ <script>
+  const luaSource = \`loadstring(game:HttpGet("\${window.location.origin}/api"))()\`;
 
-  <script>
-    function getSrcUrl(){ return document.getElementById('srcUrl').textContent.trim(); }
-    const loadBtn=document.getElementById('loadBtn');
-    const copyBtn=document.getElementById('copyBtn');
-    const openBtn=document.getElementById('openBtn');
-    const scriptBox=document.getElementById('scriptBox');
-    const status=document.getElementById('status');
-
-    async function fetchScript(){
-      const url=getSrcUrl();
-      if(!url){status.textContent='No source set.';return;}
-      try{
-        status.textContent='Fetching script...';
-        const res=await fetch(url,{cache:'no-store'});
-        if(!res.ok)throw new Error('Fetch failed: '+res.status);
-        const txt=await res.text();
-        scriptBox.value=txt;
-        await navigator.clipboard.writeText(txt);
-        status.textContent='✅ Script loaded & copied!';
-      }catch(err){
-        console.error(err);
-        status.textContent='❌ Failed to load. Check connection.';
-      }
+    function escapeHTML(e) {
+        return e.replace(/[&<>]/g, e => ({
+            "&": "&amp;",
+            "<": "&lt;",
+            ">": "&gt;"
+        })[e])
     }
 
-    copyBtn.addEventListener('click', async () => {
-      const scriptText = scriptBox.value.trim();
-      if (scriptText) {
-        await navigator.clipboard.writeText(scriptText);
-        status.textContent = '✅ Script copied to clipboard!';
-      } else {
-        status.textContent = '⚠️ No script loaded yet.';
-      }
-    });
+    function highlightLua(e) {
+        let t = escapeHTML(e),
+            n = /"(?:\\\\.|[^"\\\\])*"|'(?:\\\\.|[^'\\\\])*'/g,
+            a = [],
+            l = 0,
+            c;
+        for (; c = n.exec(t);) {
+            c.index > l && a.push({ t: "code", v: t.slice(l, c.index) });
+            a.push({ t: "str", v: c[0] });
+            l = n.lastIndex;
+        }
+        l < t.length && a.push({ t: "code", v: t.slice(l) });
+        let s = /\\b(local|function|end|if|then|else|elseif|for|while|repeat|until|return|not|and|or|do|in|true|false|nil)\\b/g,
+            r = /\\b(loadstring|game|HttpGet)\\b/g,
+            i = /\\b(\\d+(?:\\.\\d+)?)\\b/g;
 
-    loadBtn.addEventListener('click', fetchScript);
-    openBtn.addEventListener('click', ()=>window.open("https://discord.gg/xhJkMUKHyP",'_blank'));
+        function o(e) {
+            return e.replace(i, "<span class=num>$1</span>").replace(s, "<span class=kw>$1</span>").replace(r, "<span class=kw>$1</span>")
+        }
+        return a.map(e => {
+            if (e.t === "str") return "<span class=str>" + e.v + "</span>";
+            return e.v.split("\\n").map(line => {
+                let t = line.indexOf("--");
+                if (t === -1) return o(line);
+                return o(line.slice(0, t)) + "<span class=com>" + line.slice(t) + "</span>";
+            }).join("\\n");
+        }).join("")
+    }
 
-    window.addEventListener('load',()=>{
-      setTimeout(()=>{
-        const overlay=document.getElementById('welcomeOverlay');
-        if(overlay)overlay.remove();
-        fetchScript(); // auto-load and copy
-      },2700);
+    const codeEl = document.getElementById("code");
+    codeEl.innerHTML = highlightLua(luaSource);
+
+    function flash(e) {
+        let t = document.querySelector(".copy"),
+            n = t.textContent;
+        t.textContent = e;
+        setTimeout(() => t.textContent = n, 900);
+    }
+
+    document.querySelector(".copy").addEventListener("click", async () => {
+        try {
+            await navigator.clipboard.writeText(luaSource);
+            flash("Copied!");
+        } catch {
+            let e = document.createElement("textarea");
+            e.value = luaSource.trim();
+            document.body.appendChild(e);
+            e.select();
+            try { document.execCommand("copy"); flash("Copied!"); } catch {}
+            e.remove();
+        }
     });
-  </script>
+ </script>
 </body>
 </html>`);
   }

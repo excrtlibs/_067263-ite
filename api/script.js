@@ -19,7 +19,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/corelibs/xift.xyz/ref
 <head>
  <meta charset="utf-8"/>
  <meta content="width=device-width,initial-scale=1" name="viewport"/>
- <title>Chunk Hub | Loader</title>
+ <title>Vyx | Loader</title>
  <style>
   :root {
         --bg: #1a1e30;
@@ -137,7 +137,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/corelibs/xift.xyz/ref
  <div class="container">
   <div class="brand">
    <div class="brand-text">
-    📜 Loadstring
+    Xift Loader
    </div>
   </div>
   <div aria-label="Read-only code editor" class="editor" role="region">

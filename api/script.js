@@ -147,7 +147,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/corelibs/xift.xyz/ref
    <pre><code class="lua" id="code"></code></pre>
   </div>
   <div class="hint">
-   Thank you, for using Xift! Join our discord server
+   Thank you, for using Xift! Join our discord server • .gg/xhJkMUKHyP
   </div>
  </div>
  <script>

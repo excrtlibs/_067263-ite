@@ -19,7 +19,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/corelibs/seafoam/refs
 <head>
  <meta charset="utf-8"/>
  <meta content="width=device-width,initial-scale=1" name="viewport"/>
- <title>Seafoam • Loader</title>
+ <title>Seafoam</title>
  <style>
   :root {
         --bg: #1a1e30;
@@ -137,7 +137,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/corelibs/seafoam/refs
  <div class="container">
   <div class="brand">
    <div class="brand-text">
-    Seafoam Loader
+    
    </div>
   </div>
   <div aria-label="Read-only code editor" class="editor" role="region">
@@ -147,7 +147,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/corelibs/seafoam/refs
    <pre><code class="lua" id="code"></code></pre>
   </div>
   <div class="hint">
-   Thank you, for using Seafoam! Join our discord server • .gg/fkZbCUbEAR
+   
   </div>
  </div>
  <script>

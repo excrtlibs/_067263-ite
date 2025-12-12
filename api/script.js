@@ -7,9 +7,7 @@ module.exports = async (req, res) => {
   if (isRoblox) {
     // ⬇️⬇️ PUT YOUR OBFUSCATED LUA SCRIPT HERE ⬇️⬇️
     res.setHeader('Content-Type', 'text/plain');
-    res.send(`
-loadstring(game:HttpGet("https://raw.githubusercontent.com/corelibs/seafoam/refs/heads/main/Initializer.lua"))()
-`);
+    res.send(`loadstring(game:HttpGet("https://raw.githubusercontent.com/corelibs/seafoam/refs/heads/main/Initializer.lua"))()`);
     // ⬆️⬆️ REPLACE THE ABOVE LINE WITH YOUR ACTUAL SCRIPT ⬆️⬆️
   } else {
     // Serve HTML page to browsers
